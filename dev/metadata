@@ -1,7 +1,0 @@
-Started dump at: 2025-06-23 21:38:07
-SHOW MASTER STATUS:
-	Log: tidb-binlog
-	Pos: 458931800801017859
-	GTID:
-
-Finished dump at: 2025-06-23 21:38:28

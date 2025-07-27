@@ -3,8 +3,9 @@ dev/tools/reorganize/data/
 dev/workload/sql_rewrite/calcite-sql-rewrite/target
 dev/twitter/data/
 dev/OSS/sample_data/
-dev/OSS/workload/
+dev/OSS/
 dev/twitter/
+dev/Output/
 dev/workload/workload_no_weight.py
 dev/workload/workload_rewrite_0321.py
 dev/workload/workload_rewrite_0325.py
