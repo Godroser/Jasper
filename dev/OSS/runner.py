@@ -9,11 +9,11 @@ import queue
 
 def get_connection(autocommit: bool = True):
     db_conf = {
-        "host": "tidb.lvmtrh1uh8at.clusters.staging.tidb-cloud.com",
+        "host": "",
         "port": 4000,
         "user": "root",
-        "password": "pi314159",
-        "database": "gharchive_dev",
+        "password": "",
+        "database": "",
         "autocommit": autocommit,
         "use_pure": True
     }

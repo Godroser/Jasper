@@ -4,3 +4,16 @@ dev/workload/sql_rewrite/calcite-sql-rewrite/target
 dev/twitter/data/
 dev/OSS/sample_data/
 dev/OSS/workload/
+dev/twitter/
+dev/workload/workload_no_weight.py
+dev/workload/workload_rewrite_0321.py
+dev/workload/workload_rewrite_0325.py
+dev/workload/workload_rewrite_pelton_0325.py
+dev/workload/workload_rewrite_proteus_0327.py
+dev/workload/workload_rewrite.py
+dev/workload/workload_sepaerate.py
+dev/workload/workload_train.sql
+dev/parsed_sql_results.txt
+dev/metadata
+dev/README.md
+README.copy.md
