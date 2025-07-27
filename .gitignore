@@ -14,6 +14,7 @@ dev/workload/workload_rewrite_proteus_0327.py
 dev/workload/workload_rewrite.py
 dev/workload/workload_sepaerate.py
 dev/workload/workload_train.sql
+dev/README
 dev/parsed_sql_results.txt
 dev/metadata
 dev/README.md
