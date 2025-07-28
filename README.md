@@ -11,10 +11,24 @@
 
 Jasper is a joint adaptive storage framework for HTAP systems. Jasper jointly optimizes *horizontal and vertical partitioning* along with *selective column store* configuration. We propose *MCTS-HTAP*, a workload-aware search algorithm that integrates with a lightweight, data synchronization aware *evaluation model* to estimate both query execution time and synchronization overhead. Moreover, Jasper supports incremental configuration updates, allowing the system to adapt to workload changes without significant performance disruption.
 
+## 0. Description
+
+Jasper includes both row and column stores. It captures workload characteristics to construct optimal data partitions and selectively configures column store replicas for certain partitions without compromising data freshness.
+
+As illustrated in the figure , consider an e-commerce scenario with two representative workloads over the *Orders* table: transactions update the address field, and analytical queries calculate the average order amount.
+
+Based on workload analysis, our mechanism partitions data accordingly and selectively creates column store replicas for analytical hot spots.
+
+For instance, updates target partition *P0B* stored only in row format, avoiding interference with analytics. Analytical queries are served from *P1A*, a column store partition optimized for filtering and aggregation.
+
+![1753670339408](images/README/1753670339408.png)
+
+
 
 ## 1. Setup
 
 ### DB Cluster
+
 We implement Jasper on TiDB, an open-source commercial HTAP database system. We recommend to install and deploy TiDB with:
 
 [Deploy a local test cluster (for macOS and Linux)](https://docs.pingcap.com/tidb/stable/quick-start-with-tidb/#deploy-a-local-test-cluster)
@@ -61,27 +75,4 @@ Step 2: Run the search script with evaluation model.
 python advisor.py
 ```
 
-## 4. Citation
 
-If you use Grep in your research, please cite:
-
-```bibtex
-@article{DBLP:journals/pacmmod/ZhouLFLG23,
-  author       = {Xuanhe Zhou and
-                  Guoliang Li and
-                  Jianhua Feng and
-                  Luyang Liu and
-                  Wei Guo},
-  title        = {Grep: {A} Graph Learning Based Database Partitioning System},
-  journal      = {Proc. {ACM} Manag. Data},
-  volume       = {1},
-  number       = {1},
-  pages        = {94:1--94:24},
-  year         = {2023},
-  url          = {https://doi.org/10.1145/3588948},
-  doi          = {10.1145/3588948},
-  timestamp    = {Mon, 19 Jun 2023 16:36:09 +0200},
-  biburl       = {https://dblp.org/rec/journals/pacmmod/ZhouLFLG23.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
-}
-```
