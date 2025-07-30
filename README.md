@@ -3,10 +3,10 @@
 </div>
 
 <p align="center">
+  <a href="#0-description">Description</a> •
   <a href="#1-setup">Setup</a> •
   <a href="#2-configuration">Configurations</a> •
   <a href="#3-run">Run</a> •
-  <a href="#4-citation">Citation</a> •
 </p>
 
 Jasper is a joint adaptive storage framework for HTAP systems. Jasper jointly optimizes *horizontal and vertical partitioning* along with *selective column store* configuration. We propose *MCTS-HTAP*, a workload-aware search algorithm that integrates with a lightweight, data synchronization aware *evaluation model* to estimate both query execution time and synchronization overhead. Moreover, Jasper supports incremental configuration updates, allowing the system to adapt to workload changes without significant performance disruption.
@@ -21,7 +21,11 @@ Based on workload analysis, our mechanism partitions data accordingly and select
 
 For instance, updates target partition *P0B* stored only in row format, avoiding interference with analytics. Analytical queries are served from *P1A*, a column store partition optimized for filtering and aggregation.
 
-![1753670339408](images/README/1753670339408.png)
+<div align="center">
+<img src="images/README/1753670339408.png" style="width:400px; height:auto;" alt="Figure1. Illustration of Jasper">
+
+**Figure 1.** Illustration of Jasper
+</div>
 
 
 
@@ -65,7 +69,7 @@ Step 2: Run the test script to get the performance.
 python test_advisor.py
 ```
 
-### Test MCST-HTAP
+### Run MCST-HTAP
 
 Step 1: Change the settings within ./dev/config.py.
 
