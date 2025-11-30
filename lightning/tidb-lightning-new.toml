@@ -1,0 +1,108 @@
+[lightning]
+# 日志
+level = "info"
+file = "tidb-lightning.log"
+
+# 引擎文件的最大并行数。
+# 每张表被切分成一个用于存储索引的"索引引擎"和若干存储行数据的"数据引擎"。
+# 这两项设置控制两种引擎文件的最大并发数。
+index-concurrency = 2
+table-concurrency = 6
+
+[tikv-importer]
+# 选择使用的导入模式
+backend = "local"
+# 设置排序的键值对的临时存放地址，目标路径需要是一个空目录
+sorted-kv-dir = "/data2/dzh/cache"
+
+[mydumper]
+# 源数据目录
+data-source-dir = "/data3/dzh/project/HyBench-2024/Data_10x"
+
+# 禁用默认文件规则，使用自定义规则
+default-file-rules = false
+
+# 配置通配符规则，默认规则会过滤 mysql、sys、INFORMATION_SCHEMA、PERFORMANCE_SCHEMA、METRICS_SCHEMA、INSPECTION_SCHEMA 系统数据库下的所有表
+# 若不配置该项，导入系统表时会出现"找不到 schema"的异常
+filter = ['*.*', '!mysql.*', '!sys.*', '!INFORMATION_SCHEMA.*', '!PERFORMANCE_SCHEMA.*', '!METRICS_SCHEMA.*', '!INSPECTION_SCHEMA.*']
+
+# CSV 文件配置
+[mydumper.csv]
+# 字段分隔符
+separator = ','
+# 字符串分隔符
+delimiter = '"'
+# 行终止符，空字符串表示 \r 和 \n 都被视为终止符
+terminator = ''
+# 是否将第一行作为列名（CSV 文件没有表头，设为 false）
+header = false
+# 是否严格格式
+strict-format = false
+# 是否启用反斜杠转义
+backslash-escape = true
+
+# 自定义文件路由规则：匹配 CSV 文件并映射到 10hybench schema
+# 匹配 customer.csv, company.csv 等文件
+[[mydumper.files]]
+pattern = '^customer\.csv$'
+schema = '10hybench'
+table = 'customer'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^company\.csv$'
+schema = '10hybench'
+table = 'company'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^transfer\.csv$'
+schema = '10hybench'
+table = 'transfer'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^checking\.csv$'
+schema = '10hybench'
+table = 'checking'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^checkingAccount\.csv$'
+schema = '10hybench'
+table = 'checkingAccount'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^savingAccount\.csv$'
+schema = '10hybench'
+table = 'savingAccount'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^loanApps\.csv$'
+schema = '10hybench'
+table = 'loanapps'
+type = 'csv'
+
+[[mydumper.files]]
+pattern = '^loanTrans\.csv$'
+schema = '10hybench'
+table = 'loantrans'
+type = 'csv'
+
+[tidb]
+# 目标集群的信息
+host = "10.77.110.144"
+port = 4000
+user = "root"
+password = ""
+# 表架构信息在从 TiDB 的"状态端口"获取。
+status-port = 10080
+# 集群 pd 的地址。从 v7.6.0 开始支持设置多个地址。
+pd-addr = "10.77.110.144:2379"
+[[routes]]
+schema-pattern = "10hybench"
+target-schema = "10hybench"
+
+

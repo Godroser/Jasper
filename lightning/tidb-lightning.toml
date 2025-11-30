@@ -17,10 +17,10 @@ sorted-kv-dir = "/data2/dzh/cache"
 
 [mydumper]
 # 源数据目录。
-data-source-dir = "/data3/dzh/project/grep/dev/tools/reorganize/data/50pelton"
+data-source-dir = "/data3/dzh/project/HyBench-2024/Data_10x"
 
 # 配置通配符规则，默认规则会过滤 mysql、sys、INFORMATION_SCHEMA、PERFORMANCE_SCHEMA、METRICS_SCHEMA、INSPECTION_SCHEMA 系统数据库下的所有表
-# 若不配置该项，导入系统表时会出现“找不到 schema”的异常
+# 若不配置该项，导入系统表时会出现"找不到 schema"的异常
 filter = ['*.*', '!mysql.*', '!sys.*', '!INFORMATION_SCHEMA.*', '!PERFORMANCE_SCHEMA.*', '!METRICS_SCHEMA.*', '!INSPECTION_SCHEMA.*']
 [tidb]
 # 目标集群的信息
@@ -34,5 +34,5 @@ status-port = 10080
 pd-addr = "10.77.110.144:2379"
 
 [[routes]]
-schema-pattern = "50ch"
-target-schema = "50pelton"
+schema-pattern = "10hybench"
+target-schema = "10hybench"

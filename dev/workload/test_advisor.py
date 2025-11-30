@@ -22,7 +22,7 @@ def get_connection(autocommit: bool = True) -> MySQLConnection:
     "port": config.TIDB_PORT,
     "user": config.TIDB_USER,
     "password": config.TIDB_PASSWORD,
-    "database": "50ch_test", #config.TIDB_DB_NAME,
+    "database": "ch_test", #config.TIDB_DB_NAME,
     "autocommit": autocommit,
     # mysql-connector-python will use C extension by default,
     # to make this example work on all platforms more easily,
@@ -1168,11 +1168,11 @@ def run_tp_benchmark(num_clients=10, duration_seconds=60):
 # 使用示例
 if __name__ == '__main__':
   # connection自定义测试的数据库
-  # test_ap(100)
+  # test_ap(88)
   # generate_workload(100, 1)
 
   # 每个线程测试100条txn，1000条sql，txn并发度是1, ap并发度是5
-  test_query_latency_with_tp(30, 1000, 20, 5)
+  test_query_latency_with_tp(300, 1000, 3, 1)
 
   # # 运行压测：10个客户端，持续60秒
   # results = run_tp_benchmark(num_clients=20, duration_seconds=60)
