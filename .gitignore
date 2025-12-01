@@ -18,4 +18,5 @@ dev/README
 dev/parsed_sql_results.txt
 dev/metadata
 dev/README.md
+hyrise/
 README.copy.md
